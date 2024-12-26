@@ -11,3 +11,9 @@ for (let i = 0; i < 16 * 16; i++) {
 
   gridContainer.appendChild(gridItem);
 }
+const gridItem = document.querySelectorAll(".grid-item");
+for (let i = 0; i < gridItem.length; i++) {
+  gridItem[i].addEventListener("mouseover", () => {
+    gridItem[i].style.backgroundColor = "black";
+  });
+}
