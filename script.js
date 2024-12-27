@@ -1,8 +1,16 @@
 const gridContainer = document.querySelector("#grid-container");
+const sizeBtn = document.querySelector("#size-btn");
+
+sizeBtn.addEventListener("click", () => {
+  const userRequestedSize = prompt(
+    "What would you like to set the size of the grid to?"
+  );
+  deleteGrid();
+  createGrid(userRequestedSize);
+  interactWithGrid();
+});
 
 function createGrid(size) {
-  gridContainer.style.width = size;
-  gridContainer.style.height = size;
   for (let i = 0; i < 16 * 16; i++) {
     const gridItem = document.createElement("div");
 
@@ -14,16 +22,14 @@ function createGrid(size) {
     gridContainer.appendChild(gridItem);
   }
 }
-createGrid();
+
 function deleteGrid() {
   const gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((item) => {
     item.remove();
   });
 }
-function getRandomColor() {
-  return Math.floor(Math.random() * 16777215).toString(16);
-}
+
 function interactWithGrid() {
   const gridItem = document.querySelectorAll(".grid-item");
   gridItem.forEach((item) => {
@@ -32,13 +38,10 @@ function interactWithGrid() {
     });
   });
 }
+
+function getRandomColor() {
+  return Math.floor(Math.random() * 16777215).toString(16);
+}
+
+createGrid();
 interactWithGrid();
-const sizeBtn = document.querySelector("#size-btn");
-sizeBtn.addEventListener("click", () => {
-  const userRequestedSize = prompt(
-    "What would you like to set the size of the grid to?"
-  );
-  deleteGrid();
-  createGrid(userRequestedSize);
-  interactWithGrid();
-});
